@@ -63,30 +63,37 @@ The Kubernetes command-line tool. You can install it by following the instructio
 <a name="setup-steps"></a>
 ## 🚀 Setup Steps
 
-1. **Build the Docker image**:
+1. **Start the minikube cluster**:
+    ```shell
+    minikube start
+    ```
+
+2. **(Optional) Use Minikube's Docker daemon**:
+   This allows the Deployment to use the image you build locally.
+   ```shell
+   eval $(minikube docker-env)
+   ```
+
+3. **Build the Docker image**:
 
    Navigate to the repository's root directory and run:
 
    ```shell
    docker build -t my-node-app .
    ```
-   
-2. **Start the minikube cluster**:
-    ```shell
-    minikube start
-    ```
-3. **Deploy the application**:
+
+4. **Deploy the application**:
     Apply the Deployment and Service configurations with the following commands:
     ```shell
     kubectl apply -f my-node-app-deployment.yaml
     kubectl apply -f my-node-app-service.yaml
     ```
-4. **Check the Deployment and Service**:
+5. **Check the Deployment and Service**:
     ```shell
     kubectl get deployments
     kubectl get services
     ```
-5. **Access the application**:
+6. **Access the application**:
     ```shell
     minikube service my-node-app-service
     ```
