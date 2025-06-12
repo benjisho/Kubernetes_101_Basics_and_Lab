@@ -12,6 +12,8 @@ This repository contains the necessary configuration files to build a simple Nod
 3. [Setup Steps](#setup-steps)
 4. [Exploring Kubernetes Further](#exploring-kubernetes-further)
 5. [Cleaning up](#cleaning-up)
+6. [Troubleshooting](#troubleshooting)
+7. [License](#license)
 
 <a name="structure"></a>
 ## 📂 Structure
@@ -141,9 +143,17 @@ Kubernetes provides several resources that you can use to further manage your ap
 You can use the `kubectl get` command followed by the resource type to get information about that resource. For example, `kubectl get pods` will give you information about the running pods. You can also use `kubectl get all` to get information about all the resources in the Kubernetes cluster.
 
 Replace `[POD_NAME]`, `[SERVICE_NAME]`, and `[NAMESPACE_NAME]` with the name of your Pod, Service, or Namespace respectively when running the describe commands.
+
+<a name="troubleshooting"></a>
+## 🛠️ Troubleshooting
+
+- **`docker: command not found`** - Ensure Docker is installed and in your `PATH`.
+- **Image not found** - Run `eval $(minikube docker-env)` before `docker build` so the cluster can pull the local image.
+- **Minikube fails to start** - Check virtualization support and try `minikube delete` to remove any leftover state.
+
 <a name="cleaning-up"></a>
 ## 🧹 Cleaning up
-To delete the Deployment and Service, run:
+Once you're done testing your application, you can remove the resources with:
 ```shell
 kubectl delete deployment my-node-app-deployment
 kubectl delete service my-node-app-service
@@ -152,3 +162,9 @@ To stop the minikube cluster, run:
 ```shell
 minikube stop
 ```
+
+<a name="license"></a>
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
+
+
